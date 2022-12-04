@@ -6,20 +6,43 @@ class Main {
     int N = arr.length;
     sort(arr,N);
   }
-  public static void heapMax(int[] arr,int n){
+  
+  public static void heapify(int arr[], int N, int i) // recursive solution
+    {
+        int largest = i; 
+        int l = 2 * i + 1; 
+        int r = 2 * i + 2; 
+
+        if (l < N && arr[l] > arr[largest])
+            largest = l;
+ 
+        // If right child is larger than largest so far
+        if (r < N && arr[r] > arr[largest])
+            largest = r;
+ 
+        // If largest is not root
+        if (largest != i) {
+            int swap = arr[i];
+            arr[i] = arr[largest];
+            arr[largest] = swap;
+
+            heapify(arr, N, largest); // take largest as argument instead of i. because the node has been changed, and a check with its child is needed, and if its child is moved, then check its child with its child until reaches the (length-1). the outer for loop: for (int i = N / 2 - 1; i >= 0; i--)
+    }
+  
+  public static void heapMax(int[] arr,int n){ // iterative solution
     for(int i = 0; i<=n-1;i++){ // start from the 1st node and compare it with its child nodes
       int l = 2*i+1;
       int r = 2*i+2;
-      int temp = 0;
+      int temp = arr[i];
 
       if (l<n && arr[i]<arr[l]){
-        temp = arr[i];
+       
         arr[i] = arr[l];
         arr[l] = temp;
 
       }
       if (r<n && arr[i]<arr[r]){
-        temp = arr[i];
+       
         arr[i] = arr[r];
         arr[r] = temp;
 
