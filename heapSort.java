@@ -60,6 +60,16 @@ class Main {
       arr[i] = temp;
       heapMax(arr,i);
     }
+    
+    /*
+    for (int i = 0; i<n; i++){ // a reduced length of arr is put into heapMax, but the swap goes from arr[0] = arr[last] to arr[1] = arr[last],its wrong!
+      int temp = arr[0];
+      arr[0] = arr[n-1];
+      arr[n-1] = temp;
+      heapMax(arr,n--);
+    }
+    **/
+    
     System.out.println(Arrays.toString(arr));
   }
 }
