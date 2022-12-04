@@ -20,14 +20,20 @@ class Main {
         if (r < N && arr[r] > arr[largest])
             largest = r;
  
-        // If largest is not root
-        if (largest != i) {
+        for (int j = largest; j>i; j--){
+            // Recursively heapify the affected sub-tree
+            heapify(arr, N, j);
+        }
+    
+    /* equals to above
+        if (largest != i) { // it equals to
             int swap = arr[i];
             arr[i] = arr[largest];
             arr[largest] = swap;
 
             heapify(arr, N, largest); // take largest as argument instead of i. because the node has been changed, and a check with its child is needed, and if its child is moved, then check its child with its child until reaches the (length-1). the outer for loop: for (int i = N / 2 - 1; i >= 0; i--)
     }
+    **/
   
   public static void heapMax(int[] arr,int n){ // iterative solution
     for(int i = 0; i<=n-1;i++){ // start from the 1st node and compare it with its child nodes
