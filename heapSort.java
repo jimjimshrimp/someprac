@@ -59,7 +59,7 @@ class Main {
           arr[(j-1)/2] = arr[j];
           arr[j] = temp; 
         }
-        /* doesn't really need this k loop if i change the first for loop from (for(int i = 0; i<=n/2-1;i++)) to (for(int i = 0; i<=n-1;i++))
+        /* doesn't really need this below k loop if i change the first for loop from (for(int i = 0; i<=n/2-1;i++)) to (for(int i = 0; i<=n-1;i++))
          * as from 0 to n/2-1, the loop stops, but all the lefted child nodes hasn't been checked backwards, that is why i added this k loop, but that 
          * won't be necessary!
         for (int k=j ; k<=n/2-1 ;k++){ // check whether the current largest is
@@ -76,6 +76,37 @@ class Main {
             arr[r1] = temp;
           }
         }**/
+        
+        /* the for loop can also be changed to recursion , heapMax(int arr[], int N,int i)
+        for (int k = i; k >= 0; k--){
+        //int largest = i; // Initialize largest as root
+        int l = 2 * k + 1; // left = 2*i + 1
+        int r = 2 * k + 2; // right = 2*i + 2
+        int largest = k;
+        int swap;
+
+        if (l < N && arr[l] > arr[k]){
+            swap = arr[k];
+            arr[k] = arr[l];
+            arr[l] = swap;
+            largest = l;
+        }
+        if (r < N && arr[r] > arr[k]){
+            swap = arr[k];
+            arr[k] = arr[r];
+            arr[r] = swap;
+            largest = r;
+        }
+        // If largest is not root
+        for (int j = largest; j>k; j--){
+            // Recursively heapify the affected sub-tree
+            heapify(arr, N, j);
+        }
+    }
+        
+        
+        
+        **/
     }
   }
 }
@@ -100,3 +131,10 @@ class Main {
     System.out.println(Arrays.toString(arr));
   }
 }
+
+  
+  /* or in the sort function, remove the outer loop
+  
+  
+  
+  
