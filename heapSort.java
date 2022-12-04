@@ -25,15 +25,10 @@ class Main {
 
       }
       for (int j=i; j>0;j--){ // once swicthed, check whether the current largest is the larger than its parent node, and keep iterating to check every node till the first node.
-        if (j%2 !=0 && arr[j]>=arr[j/2]){
-          temp = arr[j/2];
-          arr[j/2] = arr[j];
-          arr[j] = temp;
-        }
-        if (j%2 ==0 && arr[j]>=arr[j/2-1]){
-          temp = arr[j/2-1];
-          arr[j/2-1] = arr[j];
-          arr[j] = temp;
+        if (arr[j]>=arr[(j-1)/2]){
+          temp = arr[(j-1)/2];
+          arr[(j-1)/2] = arr[j];
+          arr[j] = temp; 
         }
         for (int k=j ; k<=n/2-1 ;k++){ // check whether the current largest is
           int l1 = 2*k+1;
